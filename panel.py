@@ -1,7 +1,7 @@
 import bpy
 
 class BRUSHLAB_PT_SidePanel(bpy.types.Panel):
-    bl_label = "BrushLab Panel"
+    bl_label = "BrushLab"
     bl_idname = "BRUSHLAB_PT_sidepanel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
@@ -16,6 +16,7 @@ class BRUSHLAB_PT_SidePanel(bpy.types.Panel):
         col.prop(scene, "brushlab_folder_path", text="")
         col.prop(scene, "brushlab_use_subfolders")
         col.prop(scene, "brushlab_is_VDM")
+        col.prop(scene, "brushlab_use_subfolder_name_as_prefix")
 
         col.prop(scene, "brushlab_file_ext")
 

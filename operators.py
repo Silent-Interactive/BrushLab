@@ -15,7 +15,7 @@ class BRUSHLAB_OT_Generate(bpy.types.Operator):
             mapping=s.brushlab_mapping,
             stroke=s.brushlab_stroke,
             isVDM=s.brushlab_is_VDM,
-
+            useSubfolderNameAsPrefix=s.brushlab_use_subfolder_name_as_prefix
         )
 
         self.report({'INFO'}, "Brush generation complete!")

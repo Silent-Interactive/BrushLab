@@ -45,6 +45,11 @@ def register():
             default=True
     )
 
+    bpy.types.Scene.brushlab_use_subfolder_name_as_prefix = bpy.props.BoolProperty(
+            name="Use subfolder name as prefix",
+            default=True
+    )
+
     bpy.types.Scene.brushlab_mapping = bpy.props.EnumProperty(
         name="Mapping",
         items=[
