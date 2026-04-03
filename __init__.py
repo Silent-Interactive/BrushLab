@@ -9,10 +9,19 @@ bl_info = {
 }
 
 import bpy
+from . import panel, operators
+
+classes = operators.classes + panel.classes
 
 def register():
+    for cls in classes:
+        bpy.utils.register_class(cls)
     print("BrushLab enabled")
 
-
 def unregister():
+    for cls in reversed(classes):
+        bpy.utils.unregister_class(cls)
     print("BrushLab disabled")
+
+if __name__ == "__main__":
+    register()
