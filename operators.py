@@ -1,20 +1,24 @@
 import bpy
-from .function import create_stencil_brushes_from_jpg
+from .function import create_brushes_from_folder
 
 class BRUSHLAB_OT_Generate(bpy.types.Operator):
     bl_idname = "brushlab.generate"
     bl_label = "Generate"
-    bl_description = "Generate brushes from selected folder"
 
     def execute(self, context):
-        scene = context.scene
-        path = scene.brushlab_folder_path
-        self.report({'INFO'}, f"BrushLab button pressed! Path: {path}")
-        print(f"BrushLab button pressed! Path: {path}")
+        s = context.scene
 
-        create_stencil_brushes_from_jpg(path)
+        create_brushes_from_folder(
+            folder_path=s.brushlab_folder_path,
+            extension=s.brushlab_file_ext,
+            use_subfolders=s.brushlab_use_subfolders,
+            mapping=s.brushlab_mapping,
+            stroke=s.brushlab_stroke,
+            isVDM=s.brushlab_is_VDM,
 
+        )
+
+        self.report({'INFO'}, "Brush generation complete!")
         return {'FINISHED'}
 
-# List of classes in this file
 classes = [BRUSHLAB_OT_Generate]

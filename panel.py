@@ -1,5 +1,4 @@
 import bpy
-from .operators import BRUSHLAB_OT_Generate
 
 class BRUSHLAB_PT_SidePanel(bpy.types.Panel):
     bl_label = "BrushLab Panel"
@@ -12,10 +11,22 @@ class BRUSHLAB_PT_SidePanel(bpy.types.Panel):
         layout = self.layout
         scene = context.scene
 
-        layout.label(text="Select Folder:")
-        layout.prop(scene, "brushlab_folder_path", text="")
+        col = layout.column(align=True)
+        col.label(text="Folder Settings:")
+        col.prop(scene, "brushlab_folder_path", text="")
+        col.prop(scene, "brushlab_use_subfolders")
+        col.prop(scene, "brushlab_is_VDM")
 
-        layout.operator("brushlab.generate", text="Generate")
+        col.prop(scene, "brushlab_file_ext")
 
-# List of classes in this file
+        layout.separator()
+
+        col = layout.column(align=True)
+        col.label(text="Brush Settings:")
+        col.prop(scene, "brushlab_mapping")
+        col.prop(scene, "brushlab_stroke")
+
+        layout.separator()
+        layout.operator("brushlab.generate", text="Generate Brushes", icon='BRUSH_DATA')
+
 classes = [BRUSHLAB_PT_SidePanel]
