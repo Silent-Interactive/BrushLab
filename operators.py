@@ -1,4 +1,5 @@
 import bpy
+from .function import create_stencil_brushes_from_jpg
 
 class BRUSHLAB_OT_Generate(bpy.types.Operator):
     bl_idname = "brushlab.generate"
@@ -10,6 +11,9 @@ class BRUSHLAB_OT_Generate(bpy.types.Operator):
         path = scene.brushlab_folder_path
         self.report({'INFO'}, f"BrushLab button pressed! Path: {path}")
         print(f"BrushLab button pressed! Path: {path}")
+
+        create_stencil_brushes_from_jpg(path)
+
         return {'FINISHED'}
 
 # List of classes in this file
