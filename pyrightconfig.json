@@ -1,0 +1,13 @@
+{
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.venv",
+    "**/.git",
+    "**/.idea",
+    "**/migrations",
+  ],
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+  "typeCheckingMode": "basic",
+}
