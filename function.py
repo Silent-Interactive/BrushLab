@@ -30,5 +30,7 @@ def create_stencil_brushes_from_jpg(folder_path):
 
         if brush.asset_data is None:
             brush.asset_mark()
+            with bpy.context.temp_override(id=brush):
+                bpy.ops.ed.lib_id_load_custom_preview(filepath=file_path)
 
         print(f"Created stencil brush: {brush_name}")
