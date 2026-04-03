@@ -16,11 +16,17 @@ classes = operators.classes + panel.classes
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
+    bpy.types.Scene.brushlab_folder_path = bpy.props.StringProperty(
+        name="Folder Path",
+        description="Select folder for BrushLab",
+        subtype='DIR_PATH'
+    )
     print("BrushLab enabled")
 
 def unregister():
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
+    del bpy.types.Scene.brushlab_folder_path
     print("BrushLab disabled")
 
 if __name__ == "__main__":

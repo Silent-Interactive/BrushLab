@@ -1,8 +1,8 @@
 import bpy
-from .operators import BRUSHLAB_OT_ButtonOperator
+from .operators import BRUSHLAB_OT_Generate
 
 class BRUSHLAB_PT_SidePanel(bpy.types.Panel):
-    bl_label = "BrushLab"
+    bl_label = "BrushLab Panel"
     bl_idname = "BRUSHLAB_PT_sidepanel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
@@ -10,8 +10,12 @@ class BRUSHLAB_PT_SidePanel(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
-        layout.label(text="Welcome to BrushLab!")
-        layout.operator("brushlab.button_operator", text="Dont do it!")
+        scene = context.scene
+
+        layout.label(text="Select Folder:")
+        layout.prop(scene, "brushlab_folder_path", text="")
+
+        layout.operator("brushlab.generate", text="Generate")
 
 # List of classes in this file
 classes = [BRUSHLAB_PT_SidePanel]
